@@ -1,0 +1,62 @@
+﻿<Window x:Class="ProxyChecker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProxyChecker"
+        mc:Ignorable="d"
+        Title="Basic Proxy Checker - Matt101"
+        Icon="Proxy Icon.ico"
+        Topmost="True"
+        Height="452.295" 
+        Width="740.306"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Style="{StaticResource CustomWindowStyle}">
+    <Grid>
+        <GroupBox Name="ButtonBox" Header="Options" Margin="10,10,510,187">
+            <Grid>
+                <Button Name="LoadProxyButton" Content="Load Proxies" Margin="22,13,22,146" Click="LoadProxyButton_Click"/>
+                <Label Name="ProxyLoadedLabel" Content="Loaded Proxies:" Margin="22,41,84,113"/>
+                <Label Name="ProxyLoadedValue" Content="0" Margin="112,41,22,113" HorizontalContentAlignment="Right"/>
+                <Button Name="StartButton" Content="Start Proxy Check" Margin="22,72,22,87" Click="StartButton_Click"/>
+                <Button Name="ClearResultBoxButton" Content="Clear Result List" Margin="22,107,22,52" Click="ClearResultBoxButton_Click"/>
+                <Button Name="SaveProxiesButton" Content="Save Proxies" Margin="22,142,22,17" Click="SaveProxiesButton_Click"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Name="ProxyResultText" Header="Type/Result" Margin="10,242,510,10">
+            <Grid>
+                <RadioButton Margin="4,8,131,99" Name="httpsradiobutton" Content="HTTP/s" Checked="httpsradiobutton_Checked"/>
+                <RadioButton Margin="68,8,67,99" Name="socks4radiobutton" Content="Socks4" Checked="socks4radiobutton_Checked"/>
+                <RadioButton Margin="132,8,3,99" Name="socks5radiobutton" Content="Socks5" Checked="socks5radiobutton_Checked"/>
+                <Label Name="DeadProxiesLabel" Content="Dead Proxies:" Margin="8,35,95,64"/>
+                <Label Name="DeadProxiesValue" Content="0" Margin="103,35,14,64" HorizontalContentAlignment="Right"/>
+                <Label x:Name="WorkingProxiesLabel" Content="Working Proxies:" Margin="8,66,96,33"/>
+                <Label x:Name="WorkingProxiesValue" Content="0" Margin="103,66,14,33" HorizontalContentAlignment="Right"/>
+                <Label x:Name="ProgressLabel" Content="Progress:" Margin="8,96,96,3"/>
+                <Label x:Name="ProgressValue" Content="0/0" Margin="103,96,14,3" HorizontalContentAlignment="Right"/>
+            </Grid>
+        </GroupBox>
+        <TabControl Margin="240,10,10,73">
+            <TabItem Name="ResultList" Header="Result List">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="152"/>
+                        <ColumnDefinition Width="164"/>
+                        <ColumnDefinition Width="210"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox Name="ProxyResultList" Grid.ColumnSpan="3" Margin="-2,0,46,0"/>
+                </Grid>
+            </TabItem>
+            <TabItem Name="ProxiesList" Header="Loaded Proxy List">
+                <TextBox Name="LoadedProxyList" FontFamily="Consolas" FontSize="14" IsReadOnly="True" VerticalScrollBarVisibility="Visible" HorizontalContentAlignment="Center"/>
+            </TabItem>
+        </TabControl>
+        <Border Margin="240,354,10,10" BorderBrush="#FF343434" BorderThickness="1">
+            <Grid>
+                <ProgressBar Name="CheckingProgress" Margin="15"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
